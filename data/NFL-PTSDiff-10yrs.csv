@@ -1,4 +1,5 @@
-Tm,,Year,W,L,T,W-L%,Pts,PtsO,PtDif,PW,PWDiff
+Tm,shortname,Year,W,L,T,WLPct,Pts,PtsO,PtDif,PW,PWDiff
+Arizona Cardinals,ARI,2013,10,6,0,0.625,379,324,55,9.47,-0.53
 Atlanta Falcons,ATL,2013,4,12,0,0.25,353,443,-90,5.90,1.90
 Baltimore Ravens,BAL,2013,8,8,0,0.5,320,352,-32,7.10,-0.90
 Buffalo Bills,BUF,2013,6,10,0,0.375,339,388,-49,6.73,0.73

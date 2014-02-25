@@ -9,6 +9,9 @@
 @import "components/timeline";
 @import "components/footer";
 
+//Individual Articles - will handle in the build process in the future
+@import "articles/pythagoreanPennants";
+
 
 html{
 	height:100%;

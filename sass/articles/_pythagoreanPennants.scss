@@ -1,0 +1,16 @@
+.team{
+	width: 16.666666667%;
+}
+
+.team--label{
+	font-size: 0.85em;
+	text-align: left;
+	fill:#3D4859;
+	font-family: $serif;
+}
+
+@media (max-width: $medium) {
+	.team{
+		width: 33.333333%;
+	}
+}

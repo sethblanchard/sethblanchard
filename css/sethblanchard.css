@@ -827,41 +827,60 @@ footer .featuredAtricles {
     margin-bottom: 20px;
   }
 }
-/* line 13, ../sass/sethblanchard.scss */
+/* line 1, ../sass/articles/_pythagoreanPennants.scss */
+.team {
+  width: 16.666666667%;
+}
+
+/* line 5, ../sass/articles/_pythagoreanPennants.scss */
+.team--label {
+  font-size: 0.85em;
+  text-align: left;
+  fill: #3D4859;
+  font-family: "Arvo", Georgia, Serif;
+}
+
+@media (max-width: 900px) {
+  /* line 13, ../sass/articles/_pythagoreanPennants.scss */
+  .team {
+    width: 33.333333%;
+  }
+}
+/* line 16, ../sass/sethblanchard.scss */
 html {
   height: 100%;
 }
 
-/* line 17, ../sass/sethblanchard.scss */
+/* line 20, ../sass/sethblanchard.scss */
 body {
   background: whitesmoke;
   height: 100%;
 }
 
-/* line 22, ../sass/sethblanchard.scss */
+/* line 25, ../sass/sethblanchard.scss */
 p {
   margin: 0 0 0.977em;
 }
 
-/* line 26, ../sass/sethblanchard.scss */
+/* line 29, ../sass/sethblanchard.scss */
 a:hover {
   background: #f0f0f0;
 }
 
-/* line 30, ../sass/sethblanchard.scss */
+/* line 33, ../sass/sethblanchard.scss */
 .main {
   max-width: 1073.741px;
   margin: 0 auto;
   width: 95%;
 }
-/* line 34, ../sass/sethblanchard.scss */
+/* line 37, ../sass/sethblanchard.scss */
 .main:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 45, ../sass/sethblanchard.scss */
+/* line 48, ../sass/sethblanchard.scss */
 blockquote {
   display: block;
   font-size: 2em;
@@ -869,19 +888,19 @@ blockquote {
   color: #e0321b;
 }
 
-/* line 52, ../sass/sethblanchard.scss */
+/* line 55, ../sass/sethblanchard.scss */
 blockquote.inContext {
   display: block;
   margin: 10px;
   float: left;
 }
 
-/* line 58, ../sass/sethblanchard.scss */
+/* line 61, ../sass/sethblanchard.scss */
 img {
   max-width: 100%;
 }
 
-/* line 62, ../sass/sethblanchard.scss */
+/* line 65, ../sass/sethblanchard.scss */
 .masthead {
   text-align: center;
   border-bottom: solid 1px rgba(0, 0, 0, 0.2);
