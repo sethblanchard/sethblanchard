@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Pythagreaon Pennants</title>
+
+  
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/PythagoreanPennants.css" />
+  <style>
+
+  	.masthead{
+		font-size:4em;
+		margin-bottom: 0px;
+		text-align: center;
+  	}
+  	.byline{
+  		font-size:1.35em;
+  		text-align: center;
+  	}
+
+  	header.row{
+  		padding-bottom:15px;
+  		margin-bottom: 15px;
+  		border-bottom:solid 1px rgba(0,0,0,0.2);
+  	}
+
+  	h1, h4{
+  		font-weight: normal;
+  		color: #E0321B;
+  	}
+
+  	h3, h5{
+  		font-weight: lighter;
+  		color: #3D4859;
+  	}
+
+  	body{
+  		color: #3C3C45;
+  	}
+
+  	.team{
+  		width: 16.666666667%;
+  	}
+
+  	.team--label{
+  		font-size: 0.85em;
+  		text-align: left;
+  		fill:#3D4859;
+  		font-family: "arvo", serif;
+  	}
+
+  	#Chart{
+  		/*-webkit-transform: rotate(-10deg) translateX(50px) translateY(-45px);*/
+  		/*Add In Other Transforms*/
+  		margin:0 auto 20px;
+  		
+  	}
+
+  	.mainArticle{
+  		margin-top: 10px;
+  	}
+
+  	.clearfix{
+  		clear:both;
+  	}
+
+  </style>
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+<script type="text/javascript">
+  (function() {
+    var config = {
+      kitId: 'jjn0bxe',
+      scriptTimeout: 3000
+    };
+    var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+  })();
+</script>
+</head>
+<body>
+	<header class="row visHeader">
+		<div class="large-12 columns">
+			<h1 class="masthead tk-arvo">Pythagorean Pennants</h1>
+			<h3 class="byline tk-soleil" >Repurposing the pennant on your wall to tell your favorite team's future</h3>
+		</div>
+	</header>
+	<div id="Chart" class="row">
+	</div>
+	<div class="row">
+		<article class="mainArticle tk-soleil large-12 columns">
+			<p>
+				The Pythagorean Expectation or Projection is way of measuring your team's actual performance. It essentially says that a team's point differential is a better predictor of future performance than their actual record. It was developed by the great Bill James[1] and adapted for basketball by Daryl Morely[2] and shown for football on the FootballOutsiders[3] website.
+			</p>
+			<p>
+				I took the numbers and put a visual twist on them, see your favorite team colors - like on your wall as a kid - and quickly see which way your team could be headed in the upcoming season. 
+			</p>
+		</article>
+	</div>
+	<div class="row">
+		<section class="large-6 columns">
+			<h4 class="tk-arvo">References</h4>
+			<ul class="tk-soleil">
+				<li>Profootball-reference</li>
+				<li>Barnwell Regression</li>
+				<li>Data Sets - url</li>
+			</ul>
+		</section>
+		<section class="large-6 columns">
+			<h4 class="tk-arvo">About this Graphic</h4>
+			<p class="tk-soleil">
+				After learning about the pythagorean expectation as well as some other stats (upcoming graphics), mostly by reading @BillBarnwell I wasnted to see what the pythagorean would literally look like. 
+			</p>
+			<p class="tk-soleil">
+				I was unsure if the triangles would communicate how I think about the expecation, but after switching from a scatter plot to a series of small multiples I was pleasantly surprised with the result. 
+			</p>
+			<p class="tk-soleil">
+				As with most things this graphic is really a remix. And in that same spirit, grab the data and grab the code and make something different from it.
+				<a href="#">Data</a>
+				<a href="#">Fork on Github</a>
+			</p>
+		</section>
+	</div>
+	<footer class="row">
+
+	</footer>
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  
+  <!--  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+  <script src="js/foundation.min.js"></script>
+  <!--<script src="js/vendor/d3..v3.min.js"></script>-->
+  <script src="js/vendor/d3.v3.js"></script>
+  <script src="js/vendor/tabletop.js"></script>
+
+
+<script>
+
+
+	/*
+	TODO: 
+		1.	Turn Data into JSON
+		2.	Order Data based on what? Pythagrean wins? Wins + pts diff? Division Winners etc? 
+	*/
+
+	var url = "https://docs.google.com/spreadsheet/pub?key=0AukWLYrS6C9jdEFuYUtRSnhzNU5JMGJnZTBvMlF3WlE&output=html";
+	var dataKey = "0AukWLYrS6C9jdEFuYUtRSnhzNU5JMGJnZTBvMlF3WlE";
+
+	var xdiffs = [],
+		ydiffs =[];
+
+	
+	var plotRegression = function(seasonData){
+
+		console.log(seasonData);
+		var width = 155, //should be based on the width of the row (we even overwrite it in the CSS)
+	    	height = 110, //I'm cool with set height
+	    	domainWidth = 500, //should be dynamic with sliders - set size of pennats (up and down etc)
+	    	domainHieght = 500, //should be dynamic with sliders
+	    	margin = 50;
+
+		var x= d3.scale.linear().domain([0,600]).range([margin,domainWidth-margin]); //points scored -- diff
+		var y= d3.scale.linear().domain([0,16]).range([height-domainHieght,margin]); //pythagreon diff
+		
+
+		//Funciton Calculates the offsets from center to plot the pennenats
+		//and values used to locate the hover labels
+		//The only thing that changes is the order you pass in the values
+		//and the scale function you use
+		//This funciton is way less readable at first... maybe not worth the refactor
+		//x used to be
+		//	var x1 = x(d.ptso),
+		// 		x2 = x(d.pts),
+		// 		xDiff = x2 - x1,
+		// 		xA = xCenter - xDiff/2,
+		//		xB = xCenter + xDiff/2;
+		var locationPoints = function(scale, center, value1, value2){
+
+			var pos1 = scale(value1),
+				pos2 = scale(value2),
+				posDiff = pos2 - pos1,
+				posA = center - posDiff/2,
+				posB = center + posDiff/2;
+
+			return([posA, posB]);
+		};
+
+		//convenience functions to encode the change in order of values
+		var xPoints = function(d){
+			return locationPoints(x, width/2, d.ptso, d.pts);
+		};
+		
+
+		var yPoints = function(d){
+
+			return locationPoints(y, height/2, d.pw, d.w)
+			// var y1 = y(d.w),
+			// 	//y2 = y(d.w + mapWinDifference(d.wdiff)); //Show likley regression for next year
+			// 	y2 = y(d.pw), //or how many games the team should have one this year.. 
+			// 	yDiff = y1 - y2,
+			// 	yA = yCenter - yDiff/2,
+			// 	yB = yCenter + yDiff/2  
+			// 	return [yA,yB];
+		};
+
+
+		var triangle = function(d){
+
+			var xPts = xPoints(d),
+				yPts = yPoints(d);
+
+
+			var path = "M " + xPts[0] + " " + yPts[0] + " L " + xPts[1] + " " + yPts[0] + " L " + xPts[1] + " " + yPts[1] + " z";
+
+				return path;
+		};
+
+		//mapping from the table from Barnwell's article
+		var mapWinDifference = function(winDelta){
+
+				if(winDelta < -2){
+						return 2.6;
+				}else if(winDelta < -1.5){
+						return 2.5;
+
+				}else if(winDelta < -1){
+						return 2.0;
+
+				}else if(winDelta < -0.5){
+						return 0.6;
+
+				}else if(winDelta < 0.5){
+						return 0;
+
+				}else if(winDelta < 1){
+						return -0.9;
+
+				}else if(winDelta < 1.5){
+						return -1.5;
+
+				}else if(winDelta < 2){
+						return -1.8;
+
+				}else{
+						return -2.5;
+				}
+		};
+
+
+  	 	var svg = d3.select("#Chart").selectAll(".team")
+		      .data(seasonData)
+			    .enter().append("svg")
+			      .attr("class", "team")
+			      .attr("width", width)
+			      .attr("height", height)
+			    .append("g")
+
+  		svg.append("path")
+		    .attr("d", triangle)
+			.style("fill",function(d) {return '#' + d.primarycolor;})
+		    .style("stroke",function(d) {return '#' + d.secondarycolor;})
+		    .style("stroke-width",function(d) {return 1;})
+		    .attr("fill-opactiy", function(d){return 0.5;})
+		    .style("opactiy", function(d){return 0.5;})
+		    .append("title")
+		    .text(function(d) {return d.tm;});
+	    
+	    //Point Diff
+	 //    svg.append("text")
+	 //    	.text(d.pts - d.ptso)
+	 //    	.style("text-anchor", "middle")
+  //   		.attr('class','team--label')
+  //   		.attr('y', 20)
+  //   		.attr('x', 35);
+
+		// //Pythagorean Wins
+	 //    svg.append("text")
+	 //    	.text(d.pw)
+	 //    	.style("text-anchor", "middle")
+  //   		.attr('class','team--label')
+  //   		.attr('y', 20)
+  // 		.attr('x', 35);
+    		
+	    //Team Labels
+	    svg.append("text")
+	    		.text(function(d) {return d.shortname + ' ('+ d.w +'-'+d.l+')';})
+	    		.style("text-anchor", "middle")
+	    		.attr('class','team--label')
+	    		.attr('y', 20)
+	    		.attr('x', 38);
+
+
+	}
+
+	Tabletop.init( { key: dataKey,
+                   callback: function(data,tabletop){
+                   		//I think table top will clean it for us :) 
+						var cleanData = data.map(function(obj){
+								obj.ptdif = parseFloat(obj.ptdif);
+								obj.ptso = parseFloat(obj.ptso);
+								obj.pts = parseFloat(obj.pts);
+								obj.w = parseFloat(obj.w) ;
+								obj.pw = parseFloat(obj.pw) ;
+								obj.wdiff =  parseFloat(obj.wdiff);
+								return obj;
+						})
+						plotRegression(cleanData);
+                   },
+                   simpleSheet: true } )
+
+</script>
+
+</body>
+</html>

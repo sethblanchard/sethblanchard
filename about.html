@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>About Seth Blanchard</title>
-	  	<link rel="stylesheet" href="css/normalize.css" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--//@import url(); // Font from Google... -->
+		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
   		<link rel="stylesheet" href="css/sethblanchard.css" />
   		<script src="js/vendor/custom.modernizr.js"></script>
-
 	</head>
 	<body>
-		<header class="Title-Bar">
-			<h1>Seth Blanchard</h1>
-			<a href="#Menu">Menu</a>
-		</header>
-		<nav id="Menu" class="Nav">
+		<nav id="Menu" class="Nav active">
 			<!--TODO: Try as a tree map?? -->
 			<ul class="Nav--List">
 				<li class="Nav--List--Item">
@@ -25,183 +25,273 @@
 						About
 					</a>
 				</li>
-				<li class="Nav--List--Break"></li>
-				<li class="Nav--List--Item Nav--List--Title">
+			</ul>
+			<ul class="Nav--Article--List">
+				<li class="Nav--Article--List--Item Nav--Article--List--Title">
 					Articles
 				</li>
-				<li class="Nav--List--Item">
-					<a href="PythagoreanPennants.html"  class="Nav--List--Item--Link">
+				<li class="Nav--Article--List--Item">
+					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
 						Pythagorean Pennants
+					</a>
+				</li>
+				<li class="Nav--Article--List--Item">
+					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
+						20 or More
+					</a>
+				</li>
+				<li class="Nav--Article--List--Item">
+					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
+						Transforming Tufte pt.1
+					</a>
+				</li>
+				<li class="Nav--Article--List--Item">
+					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
+						Transforming Tufte pt.2
+					</a>
+				</li>
+				<li class="Nav--Article--List--Item">
+					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
+						Transforming Tufte pt.3
+					</a>
+				</li>
+				<li class="Nav--Article--List--Item">
+					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
+						Transforming Tufte pt.4
 					</a>
 				</li>
 			</ul>
 		</nav>
-		<section id="Main">
-			
-				<h1>Seth Blanchard</h1>
-				<img src="" />
-				<h2>
+		<section id="Main" class="grid main active">
+			<header class="Title--Bar">
+				<h1 class="Title--Bar--Logo Logo"><a href="index.html">SB</a></h1>
+				<a class="Title--Bar--Button" href="#Footer-Menu">
+					<img class="Title--Bar--Button--Icon" src="Content/menu_icon.png" />
+					Menu
+				</a>
+			</header>
+			<h1 class="masthead">Seth Blanchard</h1>
+			<article class="col-3 small-col-4">
+				<img src="content/family.jpg" />
+				<h2 class="pHeader first-Header">
 					In the Abstract
 				</h2>
 				<p>
 					I am an enthusastic Husband, Father, Friend and Hokie. When not involved with those listed, I enjoy rennovating my house, listening to music, making websites, visualizing sports and decreasingly, doing dangerous things out of doors<sup><a href="#footnote-1">1</a></sup>.
 				</p>
-				<h3>Exploration</h3>
+				<h3 class="pHeader">Exploration</h3>
 				<p> 
 					A sense of adventure/exploration that I enjoy while out of doors, really drives the work I enjoy doing. I like taking topics I don't know much about and digging in until I understand them.   
 				</p>
-				<h3>Translation</h3>
+				<h3 class="pHeader">Translation</h3>
 				<p>
 					While I'm not usually asked to translate from english to spanish (or any other language for that matter), I really enjoy taking topics in one domain and explaining them to those in another. That could be taking design priciples and explaining them to a lay audience, turning sports statistics into easily digestable graphics, or teaching my daughter the best way to make a duplo robot. Something something something. 
 				</p>
-			<aside>
+			</article>
+			<aside class="col-2 no-padding abtAside small-col-4">
 				<div>
-					<quote>
-						Torres Del Paine is my spirit animal.
-					</quote>
-					<h2>Contact<h2>
-					<a href="mailto:blanchard.seth@gmail.com">Blanchard.Seth@gmail.com</a>
-					<a href="resume.pdf">Resume</a>
-					<h2>Elsewhere</h2>
-					<a href="twitter">
-					Twitter <span>Always</span>
-					</a>
-					<a href="soundcloud">
-						Soundcloud <span>Often</span>
-					</a>
-					<a href="linkedin">
-						LinkedIn <span>Seledom</span>
-					</a>
-					<a href="github">
-						Github <span>Fitz and Starts</span>
-					</a>
+					<div class="abtAside--Contact">
+						<h2 class="pHeader first-Header abtAside--Header">Contact</h2>
+						<a class="abtAside--Contact--email" href="mailto:blanchard.seth@gmail.com">
+							Blanchard.Seth@gmail.com
+						</a>
+						<a class="abtAside--Contact--resume" href="content/SethBlanchard_Resume.pdf">Resume</a>
+					</div>
+					<div class="abtAside--eslwhere hide-small">
+						<h2 class="pHeader abtAside--Header">Elsewhere</h2>
+						<a href="twitter" class="abtAside--eslwhere--link">
+							Twitter 
+							<span class="abtAside--eslwhere--link--activity">Always</span>
+						</a>
+						<a href="soundcloud" class="abtAside--eslwhere--link">
+							Soundcloud 
+							<span class="abtAside--eslwhere--link--activity">Often</span>
+						</a>
+						<a href="linkedin" class="abtAside--eslwhere--link">
+							LinkedIn 
+							<span class="abtAside--eslwhere--link--activity">Seledom</span>
+						</a>
+						<a href="github" class="abtAside--eslwhere--link">
+							Github 
+							<span class="abtAside--eslwhere--link--activity">Fitz and Starts</span>
+						</a>
+					</div>
 				</div>
-				<a href="seth-blanchard.pdf" class="Resume">Resume</a>
-				<h2>Backstory</h2>
-				<ol>
-					<li class="">
-						Noblis
-						<ol>
-							<li>
-								Data Visualization Principal
-							</li>
-							<li>
-								Lead Software Developer
-							</li>
-							<li>
-								Senior Software Developer
-							</li>
-							<li>
-								Software Developer
-							</li>
-						</ol>
-					</li>
-					<li>
-						Pioneers - Missionary
-					</li>
-					<li>
-						SAIC
-						<ol>
-							<li>
-								Web Applicaiton Developer
-							</li>
-							<li>
-								Automation and Simulation Sepecialist
-							</li>
-						</ol>
-					</li>
-					<li>
-						Virginia Tech - Applied Computational Mathematics
-					</li>
-				</ol>
-				<ol>
-					<li>
-						<time>April 2014</time>
-						<p>Theodore Francis Blanchard</p>
-					</li>
-					<li>
-						<time>May 2013</time>
-						<p>House Rennovation Completed</p>
-					</li>
-					<li>
-						<time>July 2012</time>
-						<p>Clara Alice Blanchard</p>
-					</li>
-					<li>
-						<time>Nov 2011</time>
-						<p>House Rennovation Begins</p>
-					</li>
-					<li>
-						<time>Nov 2011</time>
-						<p>Homeowners</p>
-					</li>
-					<li>
-						<time>July 2011</time>
-						<p>Dominican Republic</p>
-					</li>
-					<li>
-						<time>Nov 2010</time>
-						<p>Chile</p>
-					</li>
-					<li>
-						<time>Oct 2008</time>
-						<p>Jess and Seth get Married</p>
-					</li>
-					<li>
-						<time>June 2007</time>
-						<p>Peru</p>
-					</li>
-					<li>
-						<time>January 2006</time>
-						<p>Brothal</p>
-					</li>
-					<li>
-						<time>May 2004</time>
-						<p>Australia</p>
-					</li>
-				</ol>
+				<div class="abtAside--Timeline">
+					<h2 class="pHeader abtAside--Header">Backstory</h2>
+					<div class="abtAside">
+						<h5 class="abtAside--Subtitle profesional">Professional</h5>
+						<h5 class="abtAside--Subtitle personal">Personal</h5>
+					</div>
+					<ol class="timeline timeline--work">
+						<li class="timeline--item yr-5 time--span noblis">
+							<time class="timeline--item--date">
+								August 2008
+							</time>
+							<span class="timeline--item--title">Noblis</span>
+							<ol class="timeline--item--sublist">
+								<li class="timeline--item--sublist--item yr-05">
+									Principal Software Developer
+								</li>
+								<li class="timeline--item--sublist--item yr-1">
+									Lead Software Developer
+								</li>
+								<li class="timeline--item--sublist--item yr-1">
+									Senior Software Developer
+								</li>
+								<li class="timeline--item--sublist--item yr-2">
+									Software Developer
+								</li>
+							</ol>
+						</li>
+						<li class="timeline--item yr-1 time--span pioneers">
+							<time class="timeline--item--date">
+								June 2007
+							</time>
+							<span class="timeline--item--title">Pioneers - Missionary</span>
+						</li>
+						<li class="timeline--item yr-3 saic time--span">
+							<time class="timeline--item--date">
+								June 2004
+							</time>
+							<span class="timeline--item--title saic">SAIC</span>
+							<ol class="timeline--item--sublist">
+								<li class="timeline--item--sublist--item yr-1">
+									Web Applicaiton Developer
+								</li>
+								<li class="timeline--item--sublist--item yr-2">
+									Automation and Simulation Sepecialist
+								</li>
+							</ol>
+						</li>
+					</ol>
+					<ol class="timeline timeline--home">
+						<li class="timeline--item time--instance theo">
+							<p class="timeline--item--title">Theodore Francis Blanchard</p>
+							<time class="timeline--item--date">April 2013</time>
+						</li>
+						<li class="timeline--item time--instance homerenoend">
+							<p class="timeline--item--title">House Rennovation Completed</p>
+							<time class="timeline--item--date">May 2012</time>
+						</li>
+						<li class="timeline--item time--instance clara">
+							<p class="timeline--item--title">Clara Alice Blanchard</p>
+							<time class="timeline--item--date">July 2011</time>
+						</li>
+						<li class="timeline--item time--instance homeowner">
+							<p class="timeline--item--title">Homeowners &amp; Begin Rennovation</p>
+							<time class="timeline--item--date">Nov 2010</time>
+						</li>
+						<li class="timeline--item time--instance dr">
+							<p class="timeline--item--title">Dominican Republic</p>
+							<time class="timeline--item--date">July 2010</time>
+						</li>
+						<li class="timeline--item time--instance chile">
+							<p class="timeline--item--title">Chile</p>
+							<time class="timeline--item--date">Nov 2009</time>
+						</li>
+						<li class="timeline--item time--instance marriage">
+							<p class="timeline--item--title">Jess and Seth get Married</p>
+							<time class="timeline--item--date">Oct 2008</time>
+						</li>
+						<li class="timeline--item time--instance machupichu">
+							<p class="timeline--item--title">Machu Pichu</p>
+							<time class="timeline--item--date">Nov 2007</time>
+						</li>
+						<li class="timeline--item time--instance austrailia">
+							<p class="timeline--item--title">Australia</p>
+							<time class="timeline--item--date">May 2004</time>
+						</li>
+					</ol>
+					<p class="timeline--start">
+						<time class="timeline--start--time">May 2004</time>
+						Graduate Virginia Tech
+					</p>
+				</div>
 			</aside>
 		</section>
-		<footer>
-			<nav>
+		<footer class="site-footer">
+			<h1 class="Logo footer--Logo">SB</h1>
+			<nav id="Footer-Menu" class="footer--Menu small-col-4">
 				<!--TODO: Try as a tree map?? -->
-				<ul>
-					<li>
-						<a href="index.html">
+				<ul class="footer--Nav">
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link" href="index.html">
 							Home
 						</a>
-					<li>
-					<li>
-						<a href="about.html">
-							About
-						</a>
-					<li>
-					<li class="Nav--List--Item Nav--List--Title">
-						Highlighted Articles
 					</li>
-					<li class="Nav--List--Item">
-						<a href="PythagoreanPennants.html"  class="Nav--List--Item--Link">
-							Pythagorean Pennants
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link" href="about.html">
+							About
 						</a>
 					</li>
 				</ul>
 			</nav>
-			<div>
-				<h4 class="">Elsewhere</h4>
-				<a href="twitter">
-					Twitter
-				</a>
-				<a href="soundcloud">
-					Soundcloud
-				</a>
-				<a href="linkedin">
-					LinkedIn
-				</a>
-				<a href="github">
-					Github
-				</a>
+			<div class="col-1 small-col-4">
+				<h4>Highlighted Articles</h4>
+				<ul class="footer--FeaturedArticles">
+					<li class="footer--FeaturedArticles--Item">
+						<a href="PythagoreanPennants.html"  class="footer--FeaturedArticles--Item--Link">
+							Pythagorean Pennants
+						</a>
+					</li>
+				</ul>
 			</div>
-			<span>&#169; 2013 - 2014 Seth Blanchard</span>
+			<div class="footer-Elsewhere col-1 small-col-4">
+				<h4 class="">Elsewhere</h4>
+				<ul class="footer--Nav">
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="twitter">
+							Twitter
+						</a>
+					</li>
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="soundcloud">
+							Soundcloud
+						</a>
+					</li>
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="linkedin">
+							LinkedIn
+						</a>
+					</li>
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="github">
+							Github
+						</a>
+					</li>
+				</ul>
+			</div>
+			<blockquote class="footer--Quote col-1 hide-small">
+				Torres Del Paine is my spirit animal.
+			</blockquote>
+			<span class="copyright">&#169; 2013 - 2014 Seth Blanchard</span>
 		</footer>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+        <script src="js/vendor/jquery.jpanelmenu.min.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <script>
+
+			var jPM = $.jPanelMenu({
+			    menu: '#Menu',
+			    trigger: '.Title--Bar--Button'
+			});
+			jPM.on();
+
+        </script>
+
 	</body>
 </html>

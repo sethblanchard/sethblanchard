@@ -1,0 +1,157 @@
+$title-position:20px;
+$menu-height:102px;
+
+.Title--Bar{
+	position:relative;
+}
+
+
+.Logo{
+	font-size:1.5em;
+	font-weight:bold;
+	padding:6px;
+	background:$primary-highlight;
+	display: inline-block;
+	a{
+		color:$nuetral;
+		font-family:$serif;
+		text-decoration:none;
+	}
+}
+
+.Title--Bar--Logo{
+	position: absolute;
+	top:$title-position;
+	left:$title-position;
+	margin:0;
+}
+
+a.Title--Bar--Button{
+	position: absolute;
+	top:$title-position;
+	right:$title-position;
+	color:$primary-highlight;
+	width:40px; //Change for smaller screens
+	height:40px;
+	display:block;
+	overflow:hidden;
+}
+
+.Title--Bar--Button--Icon{
+	width:100%;
+	color: $primary-highlight;
+}
+
+.Nav{
+	width:20%;
+	height:100%;
+	background:$primary-highlight;
+	color:$nuetral;
+	padding:10px;
+	margin-top:-$menu-height;
+	display:none;
+	//overflow:hidden;
+	padding:0;
+	margin:0;
+	position: absolute;
+}
+
+.Nav.active{
+	margin-top:0;
+	margin-bottom:$title-position;
+}
+
+//
+
+.Nav--List{
+	@include box-sizing(border-box);
+	list-item:none;
+	overflow:auto;
+	padding:0;
+	margin:0;
+}
+
+.Nav--List--Item {
+	display:block;
+	float:left;
+	@include box-sizing(border-box);
+	width:100%;
+}
+
+
+a.Nav--List--Item--Link{
+	width:99.5%;
+	color:$nuetral;
+	font-size:1.75em;
+	line-height:1.75em;
+	font-weight:bold;
+	height:$menu-height/2;
+	display:block;
+	text-decoration: none;
+	text-align:center;
+}
+
+a.Nav--List--Item--Link:hover{
+	background: lighten($primary-highlight, 4.5);
+}
+
+a.Nav--List--Item--Link.Home{
+	height:$menu-height/2 - 1;
+}
+
+
+.Nav--Article--List{
+	@include box-sizing(border-box);
+	list-item:none;
+	width:100%;
+	float:left;
+	overflow:auto;
+	margin:0;
+	padding:0 10%;
+}
+
+
+.Nav--Article--List--Item {
+	display:block;
+	height:$menu-height/2;
+	//width:25%;
+	//float:left;
+	@include box-sizing(border-box);
+}
+
+.Nav--Article--List--Title{
+	font-family: $serif;
+	font-size: 2.9em;
+	display: block;
+	height: $menu-height;
+	font-weight: normal;
+	line-height: 2em;
+	margin-right: 40px;
+	padding-right: 40px;
+	text-align: center;
+}
+
+a.Nav--Article--List--Item--Link{
+	width:100%;
+	color:$nuetral;
+	font-size:1em;
+	font-weight:bold;
+}
+
+//Fixes for smaller screens
+@media (max-width: $medium) {
+
+
+	.Logo{
+		font-size:1.2em;
+		font-weight:bold;
+		padding:3px;
+	}
+
+	a.Title--Bar--Button{
+		width:30px;
+		height:30px;
+	}
+}
+
+
