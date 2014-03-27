@@ -122,7 +122,7 @@ a {
   color: #4989ce;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   /* line 131, ../sass/_type.scss */
   h1 {
     font-size: 3em;
@@ -237,8 +237,12 @@ a {
   font-family: "Arvo", Georgia, Serif;
   text-decoration: none;
 }
+/* line 20, ../sass/components/_titlebar.scss */
+.Logo a:hover {
+  background: #e0321b;
+}
 
-/* line 22, ../sass/components/_titlebar.scss */
+/* line 25, ../sass/components/_titlebar.scss */
 .Title--Bar--Logo {
   position: absolute;
   top: 20px;
@@ -246,143 +250,58 @@ a {
   margin: 0;
 }
 
-/* line 29, ../sass/components/_titlebar.scss */
-a.Title--Bar--Button {
+/* line 32, ../sass/components/_titlebar.scss */
+.Title--Nav {
   position: absolute;
   top: 20px;
   right: 20px;
-  color: #e0321b;
-  width: 40px;
-  height: 40px;
-  display: block;
-  overflow: hidden;
 }
 
-/* line 40, ../sass/components/_titlebar.scss */
-.Title--Bar--Button--Icon {
-  width: 100%;
-  color: #e0321b;
-}
-
-/* line 45, ../sass/components/_titlebar.scss */
-.Nav {
-  width: 20%;
-  height: 100%;
+/* line 38, ../sass/components/_titlebar.scss */
+a.Title--Nav--Link {
+  padding: 10px 5px;
   background: #e0321b;
   color: whitesmoke;
-  padding: 10px;
-  margin-top: -102px;
-  display: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-}
-
-/* line 59, ../sass/components/_titlebar.scss */
-.Nav.active {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-/* line 66, ../sass/components/_titlebar.scss */
-.Nav--List {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  list-item: none;
-  overflow: auto;
-  padding: 0;
-  margin: 0;
-}
-
-/* line 74, ../sass/components/_titlebar.scss */
-.Nav--List--Item {
-  display: block;
-  float: left;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-/* line 82, ../sass/components/_titlebar.scss */
-a.Nav--List--Item--Link {
-  width: 99.5%;
-  color: whitesmoke;
-  font-size: 1.75em;
-  line-height: 1.75em;
-  font-weight: bold;
-  height: 51px;
-  display: block;
-  text-decoration: none;
+  margin-left: -4px;
+  font-size: 0.7em;
+  width: 45px;
   text-align: center;
+  display: inline-block;
 }
 
-/* line 94, ../sass/components/_titlebar.scss */
-a.Nav--List--Item--Link:hover {
-  background: #e6422c;
+/* line 50, ../sass/components/_titlebar.scss */
+a.Title--Nav--Link:first-child {
+  border-radius: 3px 0 0 3px;
 }
 
-/* line 98, ../sass/components/_titlebar.scss */
-a.Nav--List--Item--Link.Home {
-  height: 50px;
+/* line 54, ../sass/components/_titlebar.scss */
+a.Title--Nav--Link:last-child {
+  border-radius: 0 3px 3px 0;
 }
 
-/* line 103, ../sass/components/_titlebar.scss */
-.Nav--Article--List {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  list-item: none;
-  width: 100%;
-  float: left;
-  overflow: auto;
-  margin: 0;
-  padding: 0 10%;
-}
-
-/* line 114, ../sass/components/_titlebar.scss */
-.Nav--Article--List--Item {
-  display: block;
-  height: 51px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 122, ../sass/components/_titlebar.scss */
-.Nav--Article--List--Title {
-  font-family: "Arvo", Georgia, Serif;
-  font-size: 2.9em;
-  display: block;
-  height: 102px;
-  font-weight: normal;
-  line-height: 2em;
-  margin-right: 40px;
-  padding-right: 40px;
-  text-align: center;
-}
-
-/* line 134, ../sass/components/_titlebar.scss */
-a.Nav--Article--List--Item--Link {
-  width: 100%;
+/* line 58, ../sass/components/_titlebar.scss */
+a:hover.Title--Nav--Link {
+  background: #d7301a;
   color: whitesmoke;
-  font-size: 1em;
-  font-weight: bold;
 }
 
 @media (max-width: 900px) {
-  /* line 145, ../sass/components/_titlebar.scss */
+  /* line 67, ../sass/components/_titlebar.scss */
   .Logo {
     font-size: 1.2em;
     font-weight: bold;
     padding: 3px;
   }
 
-  /* line 151, ../sass/components/_titlebar.scss */
+  /* line 73, ../sass/components/_titlebar.scss */
   a.Title--Bar--Button {
     width: 30px;
     height: 30px;
+  }
+
+  /* line 78, ../sass/components/_titlebar.scss */
+  .masthead {
+    padding-top: 80px;
   }
 }
 /* line 1, ../sass/_about.scss */
@@ -720,7 +639,7 @@ h5.personal {
   padding: 2.5%;
   position: relative;
   overflow: hidden;
-  height: 15%;
+  height: 40%;
 }
 
 /* line 13, ../sass/components/_footer.scss */
@@ -771,12 +690,17 @@ a.footer--Nav--Item--Link {
 }
 
 /* line 55, ../sass/components/_footer.scss */
+a:hover.footer--Nav--Item--Link {
+  background: #3d4859;
+}
+
+/* line 59, ../sass/components/_footer.scss */
 footer .featuredAtricles {
   height: 100%;
   display: inline-block;
 }
 
-/* line 62, ../sass/components/_footer.scss */
+/* line 66, ../sass/components/_footer.scss */
 .footer--FeaturedArticles {
   list-style: none;
   width: 100%;
@@ -784,23 +708,28 @@ footer .featuredAtricles {
   padding: 0;
 }
 
-/* line 77, ../sass/components/_footer.scss */
+/* line 81, ../sass/components/_footer.scss */
 .footer--FeaturedArticles--Item--Link {
   padding: 1.5% 1.5% 1.5% 0;
 }
 
-/* line 82, ../sass/components/_footer.scss */
+/* line 86, ../sass/components/_footer.scss */
+a:hover.footer--FeaturedArticles--Item--Link {
+  background: #3d4859;
+}
+
+/* line 90, ../sass/components/_footer.scss */
 .footer-Elsewhere {
   height: 100%;
   display: inline-block;
 }
 
-/* line 90, ../sass/components/_footer.scss */
+/* line 98, ../sass/components/_footer.scss */
 .footer--Quote {
   padding: 0;
 }
 
-/* line 95, ../sass/components/_footer.scss */
+/* line 103, ../sass/components/_footer.scss */
 .copyright {
   position: absolute;
   bottom: 5px;
@@ -811,18 +740,23 @@ footer .featuredAtricles {
 }
 
 @media (max-width: 900px) {
-  /* line 106, ../sass/components/_footer.scss */
+  /* line 114, ../sass/components/_footer.scss */
+  .site-footer {
+    height: 65%;
+  }
+
+  /* line 117, ../sass/components/_footer.scss */
   .footer--Menu {
     width: 100%;
     margin: 20px 0 20px;
   }
 
-  /* line 111, ../sass/components/_footer.scss */
+  /* line 122, ../sass/components/_footer.scss */
   .footer--FeaturedArticles {
     margin-bottom: 20px;
   }
 
-  /* line 115, ../sass/components/_footer.scss */
+  /* line 126, ../sass/components/_footer.scss */
   .footer-Elsewhere {
     margin-bottom: 20px;
   }

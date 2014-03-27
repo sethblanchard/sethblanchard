@@ -12,63 +12,13 @@
   		<script src="js/vendor/custom.modernizr.js"></script>
 	</head>
 	<body>
-		<nav id="Menu" class="Nav active">
-			<!--TODO: Try as a tree map?? -->
-			<ul class="Nav--List">
-				<li class="Nav--List--Item">
-					<a href="index.html"  class="Nav--List--Item--Link">
-						Home
-					</a>
-				</li>
-				<li class="Nav--List--Item">
-					<a href="about.html"  class="Nav--List--Item--Link">
-						About
-					</a>
-				</li>
-			</ul>
-			<ul class="Nav--Article--List">
-				<li class="Nav--Article--List--Item Nav--Article--List--Title">
-					Articles
-				</li>
-				<li class="Nav--Article--List--Item">
-					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
-						Pythagorean Pennants
-					</a>
-				</li>
-				<li class="Nav--Article--List--Item">
-					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
-						20 or More
-					</a>
-				</li>
-				<li class="Nav--Article--List--Item">
-					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
-						Transforming Tufte pt.1
-					</a>
-				</li>
-				<li class="Nav--Article--List--Item">
-					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
-						Transforming Tufte pt.2
-					</a>
-				</li>
-				<li class="Nav--Article--List--Item">
-					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
-						Transforming Tufte pt.3
-					</a>
-				</li>
-				<li class="Nav--Article--List--Item">
-					<a href="PythagoreanPennants.html"  class="Nav--Article--List--Item--Link">
-						Transforming Tufte pt.4
-					</a>
-				</li>
-			</ul>
-		</nav>
 		<section id="Main" class="grid main active">
 			<header class="Title--Bar">
 				<h1 class="Title--Bar--Logo Logo"><a href="index.html">SB</a></h1>
-				<a class="Title--Bar--Button" href="#Footer-Menu">
-					<img class="Title--Bar--Button--Icon" src="Content/menu_icon.png" />
-					Menu
-				</a>
+				<nav class="Title--Nav">
+					<a class="Title--Nav--Link" href="writing.html" title="Articles, Visualization, Writing">Writing</a>
+					<a class="Title--Nav--Link" href="about.html" title="About Seth">About</a>
+				</nav>
 			</header>
 			<h1 class="masthead">Seth Blanchard</h1>
 			<article class="col-3 small-col-4">
@@ -77,15 +27,20 @@
 					In the Abstract
 				</h2>
 				<p>
-					I am an enthusastic Husband, Father, Friend and Hokie. When not involved with those listed, I enjoy rennovating my house, listening to music, making websites, visualizing sports and decreasingly, doing dangerous things out of doors<sup><a href="#footnote-1">1</a></sup>.
+					I am an enthusastic Husband, Father, Friend and Hokie. When not involved with the previous list, I enjoy rennovating my house, listening to music, making websites, visualizing sports and decreasingly, doing dangerous things out of doors.
 				</p>
 				<h3 class="pHeader">Exploration</h3>
 				<p> 
-					A sense of adventure/exploration that I enjoy while out of doors, really drives the work I enjoy doing. I like taking topics I don't know much about and digging in until I understand them.   
+					I love that moment - when you are wholly present. When your mind lets go of everything outside of your breath and what your eyes take in. That. Exact. Instant. I used to find that moment mostly high above the ground on rock faces. I've found it in foreign contries, in the head waters of the amazon or the cold rain of Patigonia. Recently I find it learning new things in my work and most frequently with my wife and our two small children. 
+				</p>
+				<p>
+					All these things really are ways of explorating. Getting to know a knew land, country, language or food. Finding the edges of your knowldege, physical strength or your humanity experiance.</p>
+				<p> 
+					I always want to be exploring. Finding that moment. Wholly present.
 				</p>
 				<h3 class="pHeader">Translation</h3>
 				<p>
-					While I'm not usually asked to translate from english to spanish (or any other language for that matter), I really enjoy taking topics in one domain and explaining them to those in another. That could be taking design priciples and explaining them to a lay audience, turning sports statistics into easily digestable graphics, or teaching my daughter the best way to make a duplo robot. Something something something. 
+					I wouldn't ask me to translate from English to Spanish (or Aymara). But, I'm really good at translation. Translating client requirements into impactful websites. Advanced sports metrics into easily digestable charts.Or my daughters instructions into a Duplo robot. These sorts of tasks are where I really thrive - and where I find that moment.
 				</p>
 			</article>
 			<aside class="col-2 no-padding abtAside small-col-4">
@@ -285,11 +240,11 @@
 
         <script>
 
-			var jPM = $.jPanelMenu({
-			    menu: '#Menu',
-			    trigger: '.Title--Bar--Button'
-			});
-			jPM.on();
+			// var jPM = $.jPanelMenu({
+			//     menu: '#Menu',
+			//     trigger: '.Title--Bar--Button'
+			// });
+			// jPM.on();
 
         </script>
 

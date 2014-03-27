@@ -7,7 +7,7 @@
 	padding:2.5%;
 	position:relative;
 	overflow:hidden;
-	height:15%;
+	height:40%;
 }
 
 footer h4{
@@ -52,6 +52,10 @@ a.footer--Nav--Item--Link{
 	padding:1.5% 1.5% 1.5% 0;
 }
 
+a:hover.footer--Nav--Item--Link{
+	background: $darker-base;
+}
+
 footer .featuredAtricles{
 	//width:20%;
 	//float:left;
@@ -79,6 +83,10 @@ footer .featuredAtricles{
 
 }
 
+a:hover.footer--FeaturedArticles--Item--Link{
+	background: $darker-base;
+}
+
 .footer-Elsewhere{
 	//width:20%;
 	//float:left;
@@ -103,6 +111,9 @@ footer .featuredAtricles{
 
 @media (max-width: $medium) {
 
+	.site-footer{
+		height:65%;
+	}
 	.footer--Menu{
 		width:100%;
 		margin:20px 0 20px;

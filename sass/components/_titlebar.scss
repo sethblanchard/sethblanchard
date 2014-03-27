@@ -17,6 +17,9 @@ $menu-height:102px;
 		font-family:$serif;
 		text-decoration:none;
 	}
+	a:hover{
+		background:$primary-highlight;
+	}
 }
 
 .Title--Bar--Logo{
@@ -26,116 +29,35 @@ $menu-height:102px;
 	margin:0;
 }
 
-a.Title--Bar--Button{
-	position: absolute;
+.Title--Nav{
+	position:absolute;
 	top:$title-position;
 	right:$title-position;
-	color:$primary-highlight;
-	width:40px; //Change for smaller screens
-	height:40px;
-	display:block;
-	overflow:hidden;
 }
 
-.Title--Bar--Button--Icon{
-	width:100%;
-	color: $primary-highlight;
-}
-
-.Nav{
-	width:20%;
-	height:100%;
+a.Title--Nav--Link{
+	padding:10px 5px;
 	background:$primary-highlight;
 	color:$nuetral;
-	padding:10px;
-	margin-top:-$menu-height;
-	display:none;
-	//overflow:hidden;
-	padding:0;
-	margin:0;
-	position: absolute;
-}
-
-.Nav.active{
-	margin-top:0;
-	margin-bottom:$title-position;
-}
-
-//
-
-.Nav--List{
-	@include box-sizing(border-box);
-	list-item:none;
-	overflow:auto;
-	padding:0;
-	margin:0;
-}
-
-.Nav--List--Item {
-	display:block;
-	float:left;
-	@include box-sizing(border-box);
-	width:100%;
-}
-
-
-a.Nav--List--Item--Link{
-	width:99.5%;
-	color:$nuetral;
-	font-size:1.75em;
-	line-height:1.75em;
-	font-weight:bold;
-	height:$menu-height/2;
-	display:block;
-	text-decoration: none;
+	margin-left:-4px;
+	font-size:0.7em;
+	width:45px;
 	text-align:center;
-}
-
-a.Nav--List--Item--Link:hover{
-	background: lighten($primary-highlight, 4.5);
-}
-
-a.Nav--List--Item--Link.Home{
-	height:$menu-height/2 - 1;
+	display:inline-block;
 }
 
 
-.Nav--Article--List{
-	@include box-sizing(border-box);
-	list-item:none;
-	width:100%;
-	float:left;
-	overflow:auto;
-	margin:0;
-	padding:0 10%;
+a.Title--Nav--Link:first-child{
+	border-radius:3px 0 0 3px;
 }
 
-
-.Nav--Article--List--Item {
-	display:block;
-	height:$menu-height/2;
-	//width:25%;
-	//float:left;
-	@include box-sizing(border-box);
+a.Title--Nav--Link:last-child{
+	border-radius:0 3px 3px 0;
 }
 
-.Nav--Article--List--Title{
-	font-family: $serif;
-	font-size: 2.9em;
-	display: block;
-	height: $menu-height;
-	font-weight: normal;
-	line-height: 2em;
-	margin-right: 40px;
-	padding-right: 40px;
-	text-align: center;
-}
-
-a.Nav--Article--List--Item--Link{
-	width:100%;
+a:hover.Title--Nav--Link{
+	background:darken($primary-highlight, 2);
 	color:$nuetral;
-	font-size:1em;
-	font-weight:bold;
 }
 
 //Fixes for smaller screens
@@ -151,6 +73,10 @@ a.Nav--Article--List--Item--Link{
 	a.Title--Bar--Button{
 		width:30px;
 		height:30px;
+	}
+
+	.masthead{
+		padding-top:80px;
 	}
 }
 
