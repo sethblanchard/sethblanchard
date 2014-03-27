@@ -77,37 +77,55 @@
 			<div id="Chart" class="row">
 			</div>
 			<div class="row">
-				<article class="mainArticle tk-soleil large-12 columns">
+				<article class="col-5">
 					<p>
-						The Pythagorean Expectation or Projection is way of measuring your team's actual performance. It essentially says that a team's point differential is a better predictor of future performance than their actual record. It was developed by the great Bill James[1] and adapted for basketball by Daryl Morely[2] and shown for football on the FootballOutsiders[3] website.
+						The Pythagorean Expectation or Projection is way of measuring your team's actual performance. It essentially says that a team's point differential is a better predictor of future performance than their actual record. It was developed by the great Bill James<sup><a id="footnoteLink_1" href="#footnote_1">[1]</a></sup> and adapted for basketball by Daryl Morely<sup><a href="#footnote_2">[2]</a></sup> and shown for football on the FootballOutsiders<sup><a href="#footnote_3">[3]</a></sup> website.
 					</p>
 					<p>
 						I took the numbers and put a visual twist on them, see your favorite team colors - like on your wall as a kid - and quickly see which way your team could be headed in the upcoming season. 
 					</p>
+					<p>
+					More text that you will write here something, something something
+					</p>
+					<div id="parallelCoordinates">
+					</div>
+					<footer>
+						<ol>
+							<li id="footnote_1">
+								Bill James - inventor of Sabermatrics... <a href="#footnoteLink_1">^</a>
+							</li>
+							<li id="footnote_1">
+								Daryl Morely - houston rockets GM and ... <a href="#footnoteLink_1">^</a>
+							</li>
+							<li id="footnote_3">
+								Football Outsidres - inventor of Sabermatrics... <a href="#footnoteLink_3">^</a>
+							</li>
+						</ol>
+					</footer>
 				</article>
 			</div>
 			<div class="row">
-				<section class="large-6 columns">
-					<h4 class="tk-arvo">References</h4>
-					<ul class="tk-soleil">
-						<li>Profootball-reference</li>
-						<li>Barnwell Regression</li>
-						<li>Data Sets - url</li>
-					</ul>
-				</section>
-				<section class="large-6 columns">
-					<h4 class="tk-arvo">About this Graphic</h4>
-					<p class="tk-soleil">
+				<section class="col-3 ">
+					<h4>About this Graphic</h4>
+					<p>
 						After learning about the pythagorean expectation as well as some other stats (upcoming graphics), mostly by reading @BillBarnwell I wasnted to see what the pythagorean would literally look like. 
 					</p>
-					<p class="tk-soleil">
+					<p>
 						I was unsure if the triangles would communicate how I think about the expecation, but after switching from a scatter plot to a series of small multiples I was pleasantly surprised with the result. 
 					</p>
-					<p class="tk-soleil">
+					<p >
 						As with most things this graphic is really a remix. And in that same spirit, grab the data and grab the code and make something different from it.
 						<a href="#">Data</a>
 						<a href="#">Fork on Github</a>
 					</p>
+				</section>
+				<section class="col-2">
+					<h4>References</h4>
+					<ul>
+						<li>Profootball-reference</li>
+						<li>Barnwell Regression</li>
+						<li>Data Sets - url</li>
+					</ul>
 				</section>
 			</div>
 		</section>
@@ -196,8 +214,7 @@
 
 			/*
 			TODO: 
-				1.	Turn Data into JSON
-				2.	Order Data based on what? Pythagrean wins? Wins + pts diff? Division Winners etc? 
+				1. Clean up when you are done.
 			*/
 
 
@@ -235,6 +252,7 @@
 				"JAC": { "PrimaryColor":	"#007198", "SecondaryColor":	"#D0B239"},
 				"KC": { "PrimaryColor":	"#B20032", "SecondaryColor":	"#F2C800"}
 			};
+
 
 			var xdiffs = [],
 				ydiffs =[];
@@ -381,6 +399,14 @@
 			    		.attr('class','team--label')
 			    		.attr('y', 20)
 			    		.attr('x', 38);
+
+
+
+
+    			/********************
+				*Parallel Coordinates Chart Starts Here
+    			*********************/
+    			//Move into seperate function.
 
 
 			}
