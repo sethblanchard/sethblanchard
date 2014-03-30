@@ -37,13 +37,14 @@
 		}
 
 		.x.axis line{
-			stroke: #EEE;
-			stroke-width:3.5px;
+			stroke: white;
+			stroke-width:2.5px;
 		}
 
 		.axis text {
 		  text-shadow: 0 1px 0 #fff;
 		  cursor: move;
+		  font-size: 1.5em;
 		}
 
 		.line {
@@ -64,7 +65,7 @@
 			font-size: 1.7em;
 		}
 
-		.line:hover + .team--name{
+		.line:hover ~ .team--name{
 			opacity: 1;
 		}
 
@@ -73,9 +74,11 @@
 			z-index:1;
 		}
 
-		.line:hover + .team--area{
+		.line:hover ~ .team--area{
 			opacity: 0.5;
 		}
+
+		
 
 		</style>
 
@@ -241,10 +244,13 @@
 
 
 
-				var m = [30, 30, 30, 30],
-			    	w = 1080 - m[1] - m[3],
-			    	h = 540 - m[0] - m[2],
-			    	axisH = 540 - m[0] - m[2]/2,
+				var baseWidth = 1080,
+					baseHeight = 540,
+					m = [50, 50, 50, 50],
+			    	w = baseWidth - m[1] - m[3],
+			    	h = baseHeight - m[0] - m[2],
+			    	axisT = baseHeight - m[0],
+			    	axisH = h,
 			    	yrs = d3.range([2003,2013],1);
 
 			    	
@@ -260,7 +266,8 @@
 
 				var xAxis = d3.svg.axis()
 				    .scale(x)
-				    .tickSize(h)
+				    .tickSize(axisH)
+				    .tickPadding(7)
 				    .tickFormat(d3.format("f"))
 				    .orient("top");
 
@@ -292,12 +299,13 @@
 
 
 				var svg = d3.select("#parallelCoordinates").append("svg")
-				    .attr("width", w + m[1] + m[3])
-				    .attr("height", h + m[0] + m[2]);
+				    .attr("width", baseWidth)
+				    .attr("height", baseHeight);
 			  
 			  	var team = svg.selectAll(".team--line")
 				      .data(teams.values())
 				    .enter().append("g")
+				      .attr("transform", "translate("+m[1] +"," + m[0] + ")")
 				      .attr("class", "team--line");
 
 				  //Team Lines
@@ -306,6 +314,8 @@
 				      .attr("d", function(d) { return line(d); })
 				      .style("stroke", function(d) { 
 				      	return teamColor(d[0].shortname); });
+
+
 
 		      	  //Team Pythagorean win Differences.
 			      team.append("path")
@@ -316,7 +326,7 @@
 		    				console.log(teamColor(d[0].shortname));
 		    				return teamColor(d[0].shortname); });
 
-				  team.append("text")
+				team.append("text")
 				      .datum(function(d) {
 				      	console.log(d);
 				       return {shortname: d[0].shortname, value: d[d.length - 1]}; })
@@ -329,7 +339,7 @@
 
 			       svg.append("g")
 				      .attr("class", "x axis")
-				      .attr("transform", "translate(0," + axisH + ")")
+				      .attr("transform", "translate("+m[1] +"," + axisT + ")")
 				      .call(xAxis);
 
 
