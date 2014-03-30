@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Pythagreaon Pennants</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--//@import url(); // Font from Google... -->
+		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+  		<link rel="stylesheet" href="css/sethblanchard.css" />
+  		<script src="js/vendor/custom.modernizr.js"></script>
+
+  		<!-- 
+		Code for parrallel Coordinates adapted from here:
+		http://bl.ocks.org/mbostock/7586334
+
+  	    -->
+		<style>
+
+		svg {
+		  font: 10px sans-serif;
+		}
+
+
+		.axis line,
+		.axis path {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+		.axis .domain{
+			stroke:none;
+		}
+
+		.x.axis line{
+			stroke: #EEE;
+			stroke-width:3.5px;
+		}
+
+		.axis text {
+		  text-shadow: 0 1px 0 #fff;
+		  cursor: move;
+		}
+
+		.line {
+		  fill: none;
+		  stroke: steelblue;
+		  stroke-width: 3.5px;
+		  opacity:0.1;
+		  z-index:10;
+
+		}
+
+		.line:hover{
+			opacity:1;
+		}
+
+		.team--name{
+			opacity: 0;
+			font-size: 1.7em;
+		}
+
+		.line:hover + .team--name{
+			opacity: 1;
+		}
+
+		.team--area{
+			opacity: 0.05;
+			z-index:1;
+		}
+
+		.line:hover + .team--area{
+			opacity: 0.5;
+		}
+
+		</style>
+
+</head>
+<body>
+	<section id="Main" class="grid main active">
+		<header class="Title--Bar">
+			<h1 class="Title--Bar--Logo Logo"><a href="index.html">SB</a></h1>
+			<nav class="Title--Nav">
+				<a class="Title--Nav--Link" href="writing.html" title="Articles, Visualization, Writing">Writing</a>
+				<a class="Title--Nav--Link" href="about.html" title="About Seth">About</a>
+			</nav>
+		</header>
+		<h1 class="masthead">Pythagorean Pennants</h1>
+		<h2 class="byline">Repurposing the pennant on your wall to tell your favorite team's future</h2>
+		<div id="Chart" class="row">
+		</div>
+		<div class="row">
+			<div id="parallelCoordinates">
+			</div>
+		</div>
+	</section>
+	<footer class="site-footer">
+			<h1 class="Logo footer--Logo">SB</h1>
+			<nav id="Footer-Menu" class="footer--Menu small-col-4">
+				<!--TODO: Try as a tree map?? -->
+				<ul class="footer--Nav">
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link" href="index.html">
+							Home
+						</a>
+					</li>
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link" href="about.html">
+							About
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="col-1 small-col-4">
+				<h4>Highlighted Articles</h4>
+				<ul class="footer--FeaturedArticles">
+					<li class="footer--FeaturedArticles--Item">
+						<a href="PythagoreanPennants.html"  class="footer--FeaturedArticles--Item--Link">
+							Pythagorean Pennants
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer-Elsewhere col-1 small-col-4">
+				<h4 class="">Elsewhere</h4>
+				<ul class="footer--Nav">
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="twitter">
+							Twitter
+						</a>
+					</li>
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="soundcloud">
+							Soundcloud
+						</a>
+					</li>
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="linkedin">
+							LinkedIn
+						</a>
+					</li>
+					<li class="footer--Nav--Item">
+						<a class="footer--Nav--Item--Link"  href="github">
+							Github
+						</a>
+					</li>
+				</ul>
+			</div>
+			<blockquote class="footer--Quote col-1 hide-small">
+				Torres Del Paine is my spirit animal.
+			</blockquote>
+			<span class="copyright">&#169; 2013 - 2014 Seth Blanchard</span>
+	</footer>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="js/vendor/jquery.jpanelmenu.min.js"></script>
+		<script src="js/vendor/d3.v3.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+ -->
+    <script>
+
+		var teamInfo = {
+				"DEN": { "PrimaryColor":	"#FB4F14", "SecondaryColor":	"#002244"},
+				"ATL": { "PrimaryColor":	"#BD0D18", "SecondaryColor":	"#000000"},
+				"NE": { "PrimaryColor":	"#0D254C", "SecondaryColor":	"#C80815"},
+				"SF": { "PrimaryColor":	"#AF1E2C", "SecondaryColor":	"#E6BE8A"},
+				"HOU": { "PrimaryColor":	"#02253A", "SecondaryColor":	"#B31B34"},
+				"GB": { "PrimaryColor":	"#213D30", "SecondaryColor":	"#FFCC00"},
+				"BAL": { "PrimaryColor":	"#280353", "SecondaryColor":	"#000000"},
+				"WAS": { "PrimaryColor":	"#773141", "SecondaryColor":	"#FFB612"},
+				"IND": { "PrimaryColor":	"#003B7B", "SecondaryColor":	"#FFFFFF"},
+				"SEA": { "PrimaryColor":	"#06192E", "SecondaryColor":	"#4EAE47"},
+				"CIN": { "PrimaryColor":	"#FB4F14", "SecondaryColor":	"#000000"},
+				"MIN": { "PrimaryColor":	"#3B0160", "SecondaryColor":	"#F0BF00"},
+				"CHI": { "PrimaryColor":	"#03202F", "SecondaryColor":	"#DD4814"},
+				"NYG": { "PrimaryColor":	"#192F6B", "SecondaryColor":	"#CA001A"},
+				"PIT": { "PrimaryColor":	"#000000", "SecondaryColor":	"#F2C800"},
+				"DAL": { "PrimaryColor":	"#002244", "SecondaryColor":	"#8C8B8A"},
+				"MIA": { "PrimaryColor":	"#006666", "SecondaryColor":	"#DF6108"},
+				"SD": { "PrimaryColor":	"#5B92E5", "SecondaryColor":	"#EEC607"},
+				"NO": { "PrimaryColor":	"#D2B887", "SecondaryColor":	"#000000"},
+				"STL": { "PrimaryColor":	"#13264B", "SecondaryColor":	"#C9AF74"},
+				"TB": { "PrimaryColor":	"#B20032", "SecondaryColor":	"#89765F"},
+				"CAR": { "PrimaryColor":	"#000000", "SecondaryColor":	"#0088CE"},
+				"NYJ": { "PrimaryColor":	"#0C371D", "SecondaryColor":	"#FFFFFF"},
+				"TEN": { "PrimaryColor":	"#648FCC", "SecondaryColor":	"#000080"},
+				"BUF": { "PrimaryColor":	"#00338D", "SecondaryColor":	"#C60C30"},
+				"CLE": { "PrimaryColor":	"#E34912", "SecondaryColor":	"#26201E"},
+				"ARI": { "PrimaryColor":	"#870619", "SecondaryColor":	"#000000"},
+				"OAK": { "PrimaryColor":	"#C4C8CB", "SecondaryColor":	"#000000"},
+				"PHI": { "PrimaryColor":	"#003B48", "SecondaryColor":	"#C0C0C0"},
+				"DET": { "PrimaryColor":	"#006DB0", "SecondaryColor":	"#C5C7CF"},
+				"JAC": { "PrimaryColor":	"#007198", "SecondaryColor":	"#D0B239"},
+				"KC": { "PrimaryColor":	"#B20032", "SecondaryColor":	"#F2C800"}
+			};
+
+			var teamColor = function(teamName){
+				return teamInfo[teamName].PrimaryColor;
+			}
+
+			var xdiffs = [],
+				ydiffs =[];
+
+			var allTheDatas;
+			
+
+			var parallelCoordinates = function(seasonData){
+			
+
+
+				/********************
+				*Parallel Coordinates Chart Starts Here
+				*********************/
+
+				//Tm,shortname,Year,W,L,T,WLPct,Pts,PtsO,PtDif,PW,PWDiff
+				allTheDatas = seasonData; // just for debugging
+				//console.log(seasonData);
+
+
+
+				//Generate a hash of arrays for each year
+				var teams = d3.nest()
+								.key(function(d) { return d.shortname; })
+								.sortValues(function(a,b) { return parseFloat(a.Year) - parseFloat(b.Year); } )
+								.map(seasonData, d3.map);
+
+
+
+
+				var m = [30, 30, 30, 30],
+			    	w = 1080 - m[1] - m[3],
+			    	h = 540 - m[0] - m[2],
+			    	axisH = 540 - m[0] - m[2]/2,
+			    	yrs = d3.range([2003,2013],1);
+
+			    	
+				var x = d3.scale.linear()
+							.domain([2003,2013]) //11 seasons...
+						    .range([0, w]);
+
+
+				var y = d3.scale.linear()
+							.domain([0,16]) //Win totals
+						    .range([h, 0]);
+
+
+				var xAxis = d3.svg.axis()
+				    .scale(x)
+				    .tickSize(h)
+				    .tickFormat(d3.format("f"))
+				    .orient("top");
+
+
+				var yAxis = d3.svg.axis()
+				    .scale(y)
+				    .orient("left");
+
+
+				var line = d3.svg.line()
+				    .x(function(d) { return x(d.Year); })
+				    .y(function(d) { return y(d.W); });
+
+		      	var pyArea = d3.svg.area()
+		          	//.interpolate('cardinal')
+		          	.x(function(d,i) { 
+		          		console.log(d);
+		            	return x(d.Year); })
+		          	.y0(function(d) { 
+		          		var W = parseFloat(d.W),
+		          			PW = parseFloat(d.PW);
+		            	return (W >= PW) ? y(PW) : y(W); 
+		            	})
+		          	.y1(function(d) { 
+		          		var W = parseFloat(d.W),
+		          			PW = parseFloat(d.PW);
+		            	return (W <= PW) ?  y(PW) : y(W); 
+	            		});
+
+
+				var svg = d3.select("#parallelCoordinates").append("svg")
+				    .attr("width", w + m[1] + m[3])
+				    .attr("height", h + m[0] + m[2]);
+			  
+			  	var team = svg.selectAll(".team--line")
+				      .data(teams.values())
+				    .enter().append("g")
+				      .attr("class", "team--line");
+
+				  //Team Lines
+				  team.append("path")
+				      .attr("class", "line")
+				      .attr("d", function(d) { return line(d); })
+				      .style("stroke", function(d) { 
+				      	return teamColor(d[0].shortname); });
+
+		      	  //Team Pythagorean win Differences.
+			      team.append("path")
+		    			.attr("d", function(d){ return pyArea(d);})
+		    			.attr("class", "team--area")
+		    			.attr("fill", function(d){ 
+		    				console.log(d);
+		    				console.log(teamColor(d[0].shortname));
+		    				return teamColor(d[0].shortname); });
+
+				  team.append("text")
+				      .datum(function(d) {
+				      	console.log(d);
+				       return {shortname: d[0].shortname, value: d[d.length - 1]}; })
+				      .attr("transform", function(d) { return "translate(" + x(d.value.Year) + "," + y(d.value.W) + ")"; })
+				      .attr("x", 3)
+				      .attr("dy", ".35em")
+				      .attr('class', 'team--name')
+				      .text(function(d) { return d.shortname; });
+
+
+			       svg.append("g")
+				      .attr("class", "x axis")
+				      .attr("transform", "translate(0," + axisH + ")")
+				      .call(xAxis);
+
+
+			}
+
+
+			d3.csv('data/NFL-PTSDiff-10yrs.csv', parallelCoordinates);
+
+
+		</script>
+	</body>
+</html>
