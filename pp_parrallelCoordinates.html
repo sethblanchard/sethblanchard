@@ -41,10 +41,37 @@
 			stroke-width:2.5px;
 		}
 
+		.y.axis line{
+			stroke:#8A8A8A;
+		}
+
 		.axis text {
 		  text-shadow: 0 1px 0 #fff;
-		  cursor: move;
 		  font-size: 1.5em;
+		}
+
+		.legend--rect{
+			opacity:0.5;
+			fill:darkgray;
+		}
+
+		.legend--rect.below{
+			fill:#003B7B;
+		}
+
+
+		.legend--rect.above{
+			fill:#006DB0;
+		}
+
+		.legend--line{
+		  stroke-width: 3.5px;
+		  stroke:steelblue;
+		}
+
+		.legend--axis{
+			stroke: white;
+			stroke-width:2.5px;
 		}
 
 		.line {
@@ -56,7 +83,7 @@
 
 		}
 
-		.line:hover{
+		.line--hover.line{
 			opacity:1;
 		}
 
@@ -65,7 +92,7 @@
 			font-size: 1.7em;
 		}
 
-		.line:hover ~ .team--name{
+		.line--hover ~ .team--name{
 			opacity: 1;
 		}
 
@@ -74,11 +101,15 @@
 			z-index:1;
 		}
 
-		.line:hover ~ .team--area{
+		.line--hover ~ .team--area{
 			opacity: 0.5;
 		}
 
-		
+
+		.mouse--over{
+			opacity:0;
+		}		
+
 
 		</style>
 
@@ -93,7 +124,7 @@
 			</nav>
 		</header>
 		<h1 class="masthead">Pythagorean Pennants</h1>
-		<h2 class="byline">Repurposing the pennant on your wall to tell your favorite team's future</h2>
+		<h2 class="byline">The Weight of Expectation</h2>
 		<div id="Chart" class="row">
 		</div>
 		<div class="row">
@@ -216,13 +247,13 @@
 			}
 
 			var xdiffs = [],
-				ydiffs =[];
+			ydiffs =[];
 
 			var allTheDatas;
 			
 
 			var parallelCoordinates = function(seasonData){
-			
+
 
 
 				/********************
@@ -237,114 +268,244 @@
 
 				//Generate a hash of arrays for each year
 				var teams = d3.nest()
-								.key(function(d) { return d.shortname; })
-								.sortValues(function(a,b) { return parseFloat(a.Year) - parseFloat(b.Year); } )
-								.map(seasonData, d3.map);
+				.key(function(d) { return d.shortname; })
+				.sortValues(function(a,b) { return parseFloat(a.Year) - parseFloat(b.Year); } )
+				.map(seasonData, d3.map);
 
 
 
 
 				var baseWidth = 1080,
 					baseHeight = 540,
-					m = [50, 50, 50, 50],
-			    	w = baseWidth - m[1] - m[3],
-			    	h = baseHeight - m[0] - m[2],
-			    	axisT = baseHeight - m[0],
-			    	axisH = h,
-			    	yrs = d3.range([2003,2013],1);
+					m = {top:100, right: 50, bottom: 50, left: 50, legend: 2},
+					w = baseWidth - m.left - m.right,
+					h = baseHeight - m.top - m.bottom,
+					axisT = baseHeight - m.top + m.bottom,
+					axisH = h ,
+					yrs = d3.range([2003,2013],1);
 
-			    	
+
 				var x = d3.scale.linear()
 							.domain([2003,2013]) //11 seasons...
-						    .range([0, w]);
+							.range([0, w]);
 
 
 				var y = d3.scale.linear()
 							.domain([0,16]) //Win totals
-						    .range([h, 0]);
+							.range([h, 0]);
 
 
 				var xAxis = d3.svg.axis()
-				    .scale(x)
-				    .tickSize(axisH)
-				    .tickPadding(7)
-				    .tickFormat(d3.format("f"))
-				    .orient("top");
+								.scale(x)
+								.tickSize(axisH)
+								.tickPadding(7)
+								.tickFormat(d3.format("f"))
+								.orient("top");
 
 
 				var yAxis = d3.svg.axis()
-				    .scale(y)
-				    .orient("left");
+								.scale(y)
+								.tickValues([4,8,12])
+								.tickPadding(5)
+								.tickSize(5)
+								.orient("left");
 
 
 				var line = d3.svg.line()
-				    .x(function(d) { return x(d.Year); })
-				    .y(function(d) { return y(d.W); });
+								.x(function(d) { return x(d.Year); })
+								.y(function(d) { return y(d.W); });
 
-		      	var pyArea = d3.svg.area()
-		          	//.interpolate('cardinal')
-		          	.x(function(d,i) { 
-		          		console.log(d);
-		            	return x(d.Year); })
-		          	.y0(function(d) { 
-		          		var W = parseFloat(d.W),
-		          			PW = parseFloat(d.PW);
-		            	return (W >= PW) ? y(PW) : y(W); 
-		            	})
-		          	.y1(function(d) { 
-		          		var W = parseFloat(d.W),
-		          			PW = parseFloat(d.PW);
-		            	return (W <= PW) ?  y(PW) : y(W); 
-	            		});
+				var pyArea = d3.svg.area()
+					          	//.interpolate('cardinal')
+					          	.x(function(d,i) { return x(d.Year); })
+					          	.y0(function(d) { 
+					          		var W = parseFloat(d.W),
+					          		PW = parseFloat(d.PW);
+					          		return (W >= PW) ? y(PW) : y(W); 
+					          	})
+					          	.y1(function(d) { 
+					          		var W = parseFloat(d.W),
+					          		PW = parseFloat(d.PW);
+					          		return (W <= PW) ?  y(PW) : y(W); 
+					          	});
 
 
-				var svg = d3.select("#parallelCoordinates").append("svg")
-				    .attr("width", baseWidth)
-				    .attr("height", baseHeight);
-			  
-			  	var team = svg.selectAll(".team--line")
-				      .data(teams.values())
-				    .enter().append("g")
-				      .attr("transform", "translate("+m[1] +"," + m[0] + ")")
-				      .attr("class", "team--line");
+
+	          	var svg = d3.select("#parallelCoordinates").append("svg")
+					          	.attr("width", baseWidth)
+					          	.attr("height", baseHeight);
+
+	          	var team = svg.selectAll(".team--line")
+					          	.data(teams.values())
+					          	.enter().append("g")
+					          	.attr("transform", "translate("+m.left +"," + m.top + ")")
+					          	.attr("class", "team--line");
 
 				  //Team Lines
-				  team.append("path")
-				      .attr("class", "line")
-				      .attr("d", function(d) { return line(d); })
-				      .style("stroke", function(d) { 
-				      	return teamColor(d[0].shortname); });
+			  	var teamLines = team.append("path")
+									  .attr("class", "line")
+									  //http://bl.ocks.org/mbostock/8033015
+									  .attr("d", function(d) { d.line=this; return line(d); })
+									  .attr("id", function(d){ return "line-"+d[0].shortname;})
+									  .style("stroke", function(d) { return teamColor(d[0].shortname); });
 
 
 
 		      	  //Team Pythagorean win Differences.
-			      team.append("path")
-		    			.attr("d", function(d){ return pyArea(d);})
-		    			.attr("class", "team--area")
-		    			.attr("fill", function(d){ 
-		    				console.log(d);
-		    				console.log(teamColor(d[0].shortname));
-		    				return teamColor(d[0].shortname); });
+	      	  	var teamAreas = team.append("path")
+							      	  .attr("d", function(d){ return pyArea(d);})
+							      	  .attr("class", "team--area")
+							      	  .attr("fill", function(d){ return teamColor(d[0].shortname); });
 
-				team.append("text")
-				      .datum(function(d) {
-				      	console.log(d);
-				       return {shortname: d[0].shortname, value: d[d.length - 1]}; })
-				      .attr("transform", function(d) { return "translate(" + x(d.value.Year) + "," + y(d.value.W) + ")"; })
-				      .attr("x", 3)
-				      .attr("dy", ".35em")
-				      .attr('class', 'team--name')
-				      .text(function(d) { return d.shortname; });
+	      	  	var teamLabels = team.append("text")
+							      	  .datum(function(d) {
+							      	  	return {shortname: d[0].shortname, value: d[d.length - 1]}; })
+							      	  .attr("transform", function(d) { return "translate(" + x(d.value.Year) + "," + y(d.value.W) + ")"; })
+							      	  .attr("x", 3)
+							      	  .attr("dy", ".35em")
+							      	  .attr('class', 'team--name')
+							      	  .text(function(d) { return d.shortname; });
+
+	      	  	//Axis
+	      	  	svg.append("g")
+		      	  		.attr("class", "x axis")
+			      	  	.attr("transform", "translate("+m.left +"," + axisT + ")")
+			      	  	.call(xAxis);
+
+	      	  	svg.append("g")
+		      	  		.attr("class", "y axis")
+		      	  		.attr("transform", "translate("+m.left +"," + m.top + ")")
+			      	  	.call(yAxis)
+		      	  	.append("text")
+		      	  		.attr("transform", "rotate(-90)")
+		      	  		.attr("x", -h+m.top-m.bottom)
+		      	  		.attr("y", 6)
+		      	  		.attr("dy", "-.71em")
+		      	  		.style("text-anchor", "end")
+		      	  		.text("Wins");
+
+				//legend
+				m.legendLeft = w,
+				m.legendTop = 20;
+				var lWidth = 60,
+					lHeight = 30,
+					textoffset = 5,
+					x1 = m.legendLeft, 
+					x2 = m.legendLeft + lWidth,
+					y1 = m.legendTop ,
+					y2 = m.legendTop  + lHeight,
+					lineAdj = 2;
+
+				//Main Rext
+				svg.append("rect")
+						.attr("width", lWidth)
+						.attr("height", lHeight)
+						.attr("transform", "translate("+ m.legendLeft + ","+ m.legendTop+ ")")
+						.attr("class", "legend--rect below");
+
+				//Diagonal Line
+				svg.append("line")
+						.attr("x1", x1+lineAdj)
+						.attr("y1", y1+lineAdj)
+						.attr("x2", x2-lineAdj)
+						.attr("y2", y2-lineAdj)
+						.attr("class", "legend--line")
+						.style("stroke-linecap", "round");
 
 
-			       svg.append("g")
-				      .attr("class", "x axis")
-				      .attr("transform", "translate("+m[1] +"," + axisT + ")")
-				      .call(xAxis);
+				//Legend Labels
+					svg.append("text")
+						.text("- Expected Wins")
+						.attr("x", x1 - textoffset)
+						.attr("y", y2)
+						.style("text-anchor", "end");
 
+					svg.append("text")
+						.text("Wins")
+						.attr("x", x1 - textoffset)
+						.attr("y", y1)
+						.style("text-anchor", "end");
+
+					svg.append("text")
+						.text("Wins")
+						.attr("x", x2 + textoffset)
+						.attr("y", y2);
+					svg.append("text")
+						.text("+ Expected Wins")
+						.attr("x", x2 + textoffset)
+						.attr("y", y1);
+
+		      	  //Getting the right hover line
+		      	  //http://bl.ocks.org/mbostock/8027637
+		      	  svg.append("rect")
+		      	  .attr("width", w)
+		      	  .attr("height", h)
+		      	  .attr("transform", "translate("+m.left +"," + m.top + ")")
+		      	  .attr("class", "mouse--over")
+		      	  .on("mousemove", mousemoved);
+
+
+		      	  function mousemoved() {
+		      	  	var m = d3.mouse(this),
+		      	  		shortestDist = Infinity,
+		      	  		sp = [],
+		      	  		selectedIndex = 0;
+		      	  	for(var i = 0; i < teamLines[0].length; i++){
+			      	  	var p = closestPoint(teamLines[0][i], m);
+			      	  	if(p.distance < shortestDist){
+			      	  		shortestDist =  p.distance;
+			      	  		selectedIndex = i;
+			      	  		sp = p;
+			      	  	}
+			      	  }
+					d3.select(".line--hover").classed("line--hover", false);
+	      	  		d3.select(teamLines[0][selectedIndex]).classed("line--hover", true);
+		      	  }
+
+		      	  function closestPoint(pathNode, point) {
+		      	  	var pathLength = pathNode.getTotalLength(),
+		      	  	precision = pathLength / pathNode.pathSegList.numberOfItems * .125,
+		      	  	best,
+		      	  	bestLength,
+		      	  	bestDistance = Infinity;
+
+					  // linear scan for coarse approximation
+					  for (var scan, scanLength = 0, scanDistance; scanLength <= pathLength; scanLength += precision) {
+					  	if ((scanDistance = distance2(scan = pathNode.getPointAtLength(scanLength))) < bestDistance) {
+					  		best = scan, bestLength = scanLength, bestDistance = scanDistance;
+					  	}
+					  }
+
+					  // binary search for precise estimate
+					  precision *= .5;
+					  while (precision > .5) {
+					  	var before,
+					  	after,
+					  	beforeLength,
+					  	afterLength,
+					  	beforeDistance,
+					  	afterDistance;
+					  	if ((beforeLength = bestLength - precision) >= 0 && (beforeDistance = distance2(before = pathNode.getPointAtLength(beforeLength))) < bestDistance) {
+					  		best = before, bestLength = beforeLength, bestDistance = beforeDistance;
+					  	} else if ((afterLength = bestLength + precision) <= pathLength && (afterDistance = distance2(after = pathNode.getPointAtLength(afterLength))) < bestDistance) {
+					  		best = after, bestLength = afterLength, bestDistance = afterDistance;
+					  	} else {
+					  		precision *= .5;
+					  	}
+					  }
+
+					  best = [best.x, best.y];
+					  best.distance = Math.sqrt(bestDistance);
+					  return best;
+
+					  function distance2(p) {
+					  	var dx = p.x - point[0],
+					  	dy = p.y - point[1];
+					  	return dx * dx + dy * dy;
+					  }
+					}
 
 			}
-
 
 			d3.csv('data/NFL-PTSDiff-10yrs.csv', parallelCoordinates);
 
