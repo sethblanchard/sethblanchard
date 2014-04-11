@@ -1,0 +1,3 @@
+In the offseason the spectacle of professional football is replaced with that of the business of the NFL. Players are cut, signed, drafted and retire.  In order to have an informed opinion[1] on our teams offseason dealings we need to know how good our team was last season. Not what their record was, but how good they really were. Are 'We' just missing one piece? Should we make trades or bottom out to acquire more or better draft picks? These decisions should be made with a solid grasp of the teams actual performance in hand. So if wins and losses don't tell us how well our team performed, what will? 
+
+The Pythagorean Expectation is one statistic that can tell us 
