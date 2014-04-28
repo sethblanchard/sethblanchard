@@ -19,7 +19,6 @@ html{
 
 body{
   	background: $nuetral;
-	height:100%;
 }
 
 p{
@@ -62,9 +61,20 @@ img{
 	max-width: 100%;
 }
 
-.masthead{
+.masthead,
+h1.masthead{
 	text-align: center;
 	border-bottom: solid 1px rgba(0,0,0,0.2);
+	margin-bottom: 0;
+	padding: 100px 0 10px;
+}
+
+.byline,
+h2.byline{
+	font-size: 1.25em;
+	text-align: center;
+	padding-top: 10px;
+	margin-bottom: 60px;
 }
 
 
